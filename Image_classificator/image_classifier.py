@@ -9,6 +9,7 @@ from torch.utils.data import DataLoader
 import os
 
 
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Add Dataset
@@ -90,4 +91,28 @@ train_dataloader, test_dataloader, class_names = create_dataloader(
 
 print(train_dataloader, test_dataloader, class_names) # this wont print bcs there's no datasets 
 
+'''
+# Test if the image is loaded properly 
+
+# Get  Batch Image
+
+image_batch, label_batch = next(iter(train_dataloader))
+
+# Get an image from the batch
+image, label = image_batch[0], label_batch[0]
+
+# View the batch shape
+
+print(image.shape, label)
+
+# Plot the image
+
+plt.imshow(image.permute(1, 2, 0)) # Rearrange dimensions for matplotlib
+plt.title(class_names[0])
+plt.axis(False)
+
+'''
+
+
+# Train the model
 
